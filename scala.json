@@ -1,0 +1,15 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "github>sceredi/renovate-config"
+    ],
+    "packageRules": [
+        {
+            "description": "Trigger a patch update on Scala upgrades",
+            "matchPackagePrefixes": [
+                "org.scala-lang"
+            ],
+            "semanticCommitScope": "core-deps"
+        }
+    ]
+}

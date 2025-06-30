@@ -1,0 +1,48 @@
+{
+    "extends": [
+        "config:base",
+        ":rebaseStalePrs",
+        ":semanticCommits",
+        ":semanticCommitTypeAll(chore)"
+    ],
+    "assignees": [
+        "sceredi"
+    ],
+    "automerge": true,
+    "dependencyDashboard": true,
+    "labels": [
+        "dependencies"
+    ],
+    "git-submodules": {
+        "enabled": true
+    },
+    "includeForks": true,
+    "packageRules": [
+        {
+            "description": "Wait one day before proposing updates",
+            "internalChecksFilter": "strict",
+            "stabilityDays": 1
+        },
+        {
+            "description": "Wait three days for npm updates (npm retraction time)",
+            "matchDatasources": [
+                "npm"
+            ],
+            "internalChecksFilter": "strict",
+            "stabilityDays": 3
+        },
+        {
+            "description": "Updates to GitHub Actions should be tagged as 'ci'",
+            "matchPaths": [
+                ".github/workflows/*.yml",
+                ".github/workflows/*.yaml"
+            ],
+            "semanticCommitType": "ci"
+        }
+    ],
+    "prConcurrentLimit": 25,
+    "prHourlyLimit": 0,
+    "separateMajorMinor": true,
+    "separateMinorPatch": true,
+    "separateMultipleMajor": true
+}
